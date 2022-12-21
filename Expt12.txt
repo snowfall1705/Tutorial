@@ -1,0 +1,64 @@
+12. a) Write a program to check if the two strings entered by user are anagrams or not. Two words are said to be anagrams if the letters of one word can be rearranged to form the other word. For example, jaxa and ajax are anagrams of each other.
+
+import java.util.Arrays;
+
+class lab_exam12 {
+   public static void main(String[] args) {
+       String str1 = "Race";
+       String str2 = "Care";
+
+       str1 = str1.toLowerCase();
+       str2 = str2.toLowerCase();
+
+       if(str1.length() == str2.length()) {
+
+           // convert strings to char array
+           char[] charArray1 = str1.toCharArray();
+           char[] charArray2 = str2.toCharArray();
+
+           Arrays.sort(charArray1);
+           Arrays.sort(charArray2);
+           boolean result = Arrays.equals(charArray1, charArray2);
+
+           if(result) {
+               System.out.println(str1 + " and " + str2 + " are anagram.");
+           }
+           else {
+               System.out.println(str1 + " and " + str2 + " are not anagram.");
+           }
+       }
+       else {
+           System.out.println(str1 + " and " + str2 + " are not anagram.");
+       }
+   }
+}
+b) Check whether the string is palindrome without using string methods.
+
+import java.util.Scanner;
+public class lab_exam12
+{
+   public static void main(String[] args)
+   {
+       Scanner sc = new Scanner(System.in);
+       System.out.println("Please enter string to check palindrome: ");
+       String strInput = sc.nextLine();
+       char[] chString = strInput.toCharArray();
+       // storing reverse string
+       String strReverse = "";
+       // reading char by char
+       for(int a = chString.length - 1; a >= 0; a--)
+       {
+           strReverse = strReverse + chString[a];
+       }
+       System.out.println("Given string: " + strInput);
+       System.out.println("Reverse String: " + strReverse);
+       if(strInput.equals(strReverse))
+       {
+           System.out.println("string is palindrome.");
+       }
+       else
+       {
+           System.out.println("string is not palindrome.");
+       }
+   }
+}

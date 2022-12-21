@@ -1,0 +1,56 @@
+26.1) Write a Java program to find the maximum and minimum value of an array    
+public class lab_exam26 {
+   public static void main(String[] args) {
+       int array[]= {23, 92, 56, 39, 93};
+       int max = 0;
+
+       for(int i=0; i<array.length; i++ ) {
+           if(array[i]>max) {
+               max = array[i];
+           }
+       }
+       int min = array[0];
+
+       for(int i=0; i<array.length; i++ ) {
+           if(array[i]<min) {
+               min = array[i];
+           }
+       }
+       System.out.println("Maximum value: "+max);
+       System.out.println("Minimum value: "+min);
+   }
+}
+
+
+
+26. 2) Write a Java program to find the second largest element in an array.
+
+
+
+
+
+
+26. 3) Take 10 integer inputs from user and store them in an array. Now, copy all the elements in another array but in reverse order.
+
+import java.util.Scanner;
+
+public class lab_exam26 {
+   public static void main(String[] args) {
+       Scanner sc=new Scanner(System.in);
+       int arr[] =new int[10];
+       System.out.println("Enter 10 numbers");
+       for(int i=0;i<10;i++){
+           arr[i]=sc.nextInt();
+       }
+
+       int arr1[]=new int[10];
+       for (int j=0;j<10;j++){
+           arr1[j]=arr[10-j-1];
+       }
+
+       for(int k=0;k<10;k++){
+           System.out.print(arr1[k]);
+       }
+
+   }
+}
