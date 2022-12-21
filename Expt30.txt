@@ -1,0 +1,130 @@
+30 .All the banks operating in India are controlled by RBI. RBI has set a well defined guideline (e.g.       minimum interest rate, minimum balance allowed, maximum withdrawal limit etc) which all banks must   follow. For example, suppose RBI has set minimum interest rate applicable to a saving bank account to be 4% annually; however, banks are free to use 4% interest rate or to set any rates above it. 
+Write a JAVA program to implement bank functionality in the above scenario and demonstrate the dynamic polymorphism concept. Note: Create few classes namely Customer, Account, RBI (Base Class) and few derived classes (SBI, ICICI, PNB etc). Assume and implement required member variables and functions in each class.
+Hint: Class Customer {
+ //Personal Details ... // Few functions ... 
+} 
+Class Account { 
+// Account Detail ... // Few functions ...
+ } 
+Class RBI { Customer c; //hasA relationship Account a;
+ //hasA relationship .. 
+Public double GetInterestRate() { }
+ Public double GetWithdrawalLimit() { }
+ } 
+Class SBI: public RBI {
+ //Use RBI functionality or define own functionality. 
+} 
+Class ICICI: public RBI { //Use RBI functionality or define own functionality. }
+
+// Customer class to store personal details of the customer
+class Customer {
+  private String name;
+  private String address;
+  private long phoneNumber;
+  private String email;
+
+  public Customer(String name, String address, long phoneNumber, String email) {
+    this.name = name;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+  }
+
+  public String getName() {
+    return this.name;
+  }
+ 
+  public String getAddress() {
+    return this.address;
+  }
+
+  public long getPhoneNumber() {
+    return this.phoneNumber;
+  }
+
+  public String getEmail() {
+    return this.email;
+  }
+}
+
+// Account class to store account details and perform account-related actions
+class Account {
+  private long accountNumber;
+  private double balance;
+  private Customer customer;
+
+  public Account(long accountNumber, double balance, Customer customer) {
+    this.accountNumber = accountNumber;
+    this.balance = balance;
+    this.customer = customer;
+  }
+
+  public long getAccountNumber() {
+    return this.accountNumber;
+  }
+
+  public double getBalance() {
+    return this.balance;
+  }
+
+  public Customer getCustomer() {
+    return this.customer;
+  }
+
+  public void deposit(double amount) {
+    this.balance += amount;
+  }
+
+  public void withdraw(double amount) {
+    if (amount > this.balance) {
+      System.out.println("Insufficient balance");
+    } else {
+      this.balance -= amount;
+    }
+  }
+}
+
+// RBI class to set guidelines for banks and perform RBI-related actions
+class RBI {
+  protected double minimumInterestRate;
+  protected double minimumBalance;
+  protected double maximumWithdrawalLimit;
+
+  public RBI(double minimumInterestRate, double minimumBalance, double maximumWithdrawalLimit) {
+    this.minimumInterestRate = minimumInterestRate;
+    this.minimumBalance = minimumBalance;
+    this.maximumWithdrawalLimit = maximumWithdrawalLimit;
+  }
+
+  public double getMinimumInterestRate() {
+    return this.minimumInterestRate;
+  }
+
+  public double getMinimumBalance() {
+    return this.minimumBalance;
+  }
+
+  public double getMaximumWithdrawalLimit() {
+    return this.maximumWithdrawalLimit;
+  }
+
+  public double calculateInterest(double balance) {
+    return balance * this.minimumInterestRate;
+  }
+}
+
+// SBI class that extends the RBI class and performs SBI-specific actions
+class SBI extends RBI {
+  public SBI(double minimumInterestRate, double minimumBalance, double maximumWithdrawalLimit) {
+    super(minimumInterestRate, minimumBalance, maximumWithdrawalLimit);
+  }
+
+  public void applyForLoan(double loanAmount) {
+    System.out.println("Loan application submitted for SBI");
+  }
+}
+
+// ICICI class that extends the RBI class and performs ICICI-specific actions
+class ICICI extends RBI {
+  public ICICI(double minimumInterestRate, double minimumBalance, double maximumWithdrawalLimit) {
+    super(
